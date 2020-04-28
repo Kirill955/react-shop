@@ -10,6 +10,7 @@ nav
         align-items: center
         list-style: none
         margin: 0 auto
+        z-index: 1000
         @media(max-width: 1280px) 
             display: none
         li 
@@ -40,4 +41,51 @@ nav
                 width: 100%                
         li:last-child 
             border-right: none
-.burger-menu
+nav.nav-active
+    align-items: flex-start
+    padding: 0
+    justify-content: start
+    transition: all .5s 
+nav.nav-active > ul
+    display: flex
+    flex-direction: column
+    margin: 0
+    background: #4ccfc1
+    li 
+        border-right: none
+        margin-right: 0
+/*Burger menu*/
+.burger-menu 
+    display: none
+    position: relative
+    width: 40px
+    height: 4px
+    background: #fff
+    transition: width .5s linear
+    @media(max-width: 1280px)
+        display: block
+    &:hover
+        cursor: pointer
+    &::before, &::after
+        content: ' '
+        width: 40px
+        height: 4px
+        position: absolute
+        background: #fff
+        overflow: hidden
+        transition: transform .5s linear
+    &::before
+        top: -10px
+    &::after
+        bottom: -10px
+.burger-menu.active
+    width: 0 
+    transition: transform .5s linear
+    margin-top: 15px
+    &::before
+        top: 0
+        transform: rotate(45deg) 
+    &::after
+        top: 0
+        transform: rotate(-45deg) 
+        
